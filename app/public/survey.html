@@ -25,7 +25,7 @@
                 <input type="text" class="form-control" id="name" placeholder="Name">
                 <label class="lead" for="photo">Upload a photo</label>
                 <br>
-                <input type="file" class="lead" name="pic" accept="image/*">
+                <input type="file" class="lead" name="pic" id ="photo" accept="image/*">
             </div>
             <p class="lead">How much do you agree with the following statements?</p>
             <p class="lead" id="key">Key: 1: strongly disagree, 2: disagree 3: neutral 4: agree 5: strongly agree</p>
@@ -140,8 +140,58 @@
                 </select>
             </div>
         </form>
-        <a href="home.html"><button class="btn">Submit</button></a>
+        <button class="btn" id="submit">Submit</button>
     </div>
+    <a href="/api/friends">Friends API</a>
 </body>
 
 </html>
+
+<script type="text/javascript">
+
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+
+        var newUser = {
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
+            "scores": [
+                $('#question1').val().trim(),
+                $('#question2').val().trim(),
+                $('#question3').val().trim(),
+                $('#question4').val().trim(),
+                $('#question5').val().trim(),
+                $('#question6').val().trim(),
+                $('#question7').val().trim(),
+                $('#question8').val().trim(),
+                $('#question9').val().trim(),
+                $('#question10').val().trim()
+            ]
+        };
+
+        console.log(newUser);
+
+        $.post("/api/friends", newUser,
+            function (data) {
+
+                // insert friend match modal display function here
+
+                // Clear the form when submitting
+                $("#name").val("");
+                $("#photo").val("");
+                $('#question1').val(""),
+                $('#question2').val(""),
+                $('#question3').val(""),
+                $('#question4').val(""),
+                $('#question5').val(""),
+                $('#question6').val(""),
+                $('#question7').val(""),
+                $('#question8').val(""),
+                $('#question9').val(""),
+                $('#question10').val("")
+
+            });
+
+    });
+
+</script>
