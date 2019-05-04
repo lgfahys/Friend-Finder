@@ -1,0 +1,13 @@
+#survey-container {
+    width: 650px;
+    margin-top: 30px;
+}
+
+#key {
+    color: darkcyan;
+    font-size: medium;
+}
+
+h1 {
+    text-align: center;
+}
