@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
     <!-- jQuery library link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
@@ -20,178 +21,217 @@
     </center>
     <div class="container" id="survey-container">
         <form>
-            <div class="form-group">
-                <label class="lead" for="name">Enter your name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name">
-                <label class="lead" for="photo">Upload a photo</label>
-                <br>
-                <input type="file" class="lead" name="pic" id ="photo" accept="image/*">
-            </div>
+
+            <label class="lead" for="name">Enter your name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name">
+            <br>
+
+            <label class="lead" for="photo">Upload a photo</label>
+            <input type="text" class="form-control" id="photo" placeholder="Image URL">
+            <br>
+
             <p class="lead">How much do you agree with the following statements?</p>
             <p class="lead" id="key">Key: 1: strongly disagree, 2: disagree 3: neutral 4: agree 5: strongly agree</p>
-            <div class="form-group">
-                <label class="lead" for="question1">1.) I like to be outdoors</label>
-                <select class="form-control" id="question1">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question2">2.) I consider myself active</label>
-                <select class="form-control" id="question2">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question3">3.) I like to read for fun</label>
-                <select class="form-control" id="question3">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question4">4.) I prefer the beach over the mountains</label>
-                <select class="form-control" id="question4">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question5">5.) I am a summer person rather than a winter person</label>
-                <select class="form-control" id="question5">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question6">6.) I like to go out to parties</label>
-                <select class="form-control" id="question6">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question7">7.) I like dogs</label>
-                <select class="form-control" id="question7">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question8">8.) I enjoy watching sports</label>
-                <select class="form-control" id="question8">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question9">9.) I like watching movies</label>
-                <select class="form-control" id="question9">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="lead" for="question10">10.) I am very self-motivated</label>
-                <select class="form-control" id="question10">
-                    <option value="empty"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
+
+            <label class="lead" for="question1">1.) I like to be outdoors</label>
+            <select class="select" id="question1">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question2">2.) I consider myself active</label>
+            <select class="select" id="question2">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question3">3.) I like to read for fun</label>
+            <select class="select" id="question3">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question4">4.) I prefer the beach over the mountains</label>
+            <select class="select" id="question4">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question5">5.) I am a summer person rather than a winter person</label>
+            <select class="select" id="question5">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question6">6.) I like to go out to parties</label>
+            <select class="select" id="question6">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question7">7.) I like dogs</label>
+            <select class="select" id="question7">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question8">8.) I enjoy watching sports</label>
+            <select class="select" id="question8">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question9">9.) I like watching movies</label>
+            <select class="select" id="question9">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <label class="lead" for="question10">10.) I am very self-motivated</label>
+            <select class="select" id="question10">
+                <option value="empty"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
         </form>
         <button class="btn" id="submit">Submit</button>
+        <br>
+        <a href="/api/friends">Friends API</a>
     </div>
-    <a href="/api/friends">Friends API</a>
+    <!-- Modal -->
+    <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="matchModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Here's Your Best Match!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id="match-name"></h3>
+                    <img id="match-image" src="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            // Form Validation
+            function validateForm() {
+                var isValid = true;
+                $(".form-control").each(function () {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                    }
+                });
 
-    $("#submit").on("click", function (event) {
-        event.preventDefault();
+                $(".select").each(function () {
 
-        var newUser = {
-            name: $("#name").val().trim(),
-            photo: $("#photo").val().trim(),
-            "scores": [
-                $('#question1').val().trim(),
-                $('#question2').val().trim(),
-                $('#question3').val().trim(),
-                $('#question4').val().trim(),
-                $('#question5').val().trim(),
-                $('#question6').val().trim(),
-                $('#question7').val().trim(),
-                $('#question8').val().trim(),
-                $('#question9').val().trim(),
-                $('#question10').val().trim()
-            ]
-        };
+                    if ($(this).val() === "empty") {
+                        isValid = false;
+                    }
+                });
+                return isValid;
+            }
 
-        console.log(newUser);
+            if (validateForm()) {
+                var newUser = {
+                    name: $("#name").val().trim(),
+                    photo: $("#photo").val().trim(),
+                    "scores": [
+                        $('#question1').val().trim(),
+                        $('#question2').val().trim(),
+                        $('#question3').val().trim(),
+                        $('#question4').val().trim(),
+                        $('#question5').val().trim(),
+                        $('#question6').val().trim(),
+                        $('#question7').val().trim(),
+                        $('#question8').val().trim(),
+                        $('#question9').val().trim(),
+                        $('#question10').val().trim()
+                    ]
+                };
 
-        $.post("/api/friends", newUser,
-            function (data) {
+                console.log(newUser);
 
-                // insert friend match modal display function here
+                $.post("/api/friends", newUser,
+                    function (data) {
 
-                // Clear the form when submitting
-                $("#name").val("");
-                $("#photo").val("");
-                $('#question1').val(""),
-                $('#question2').val(""),
-                $('#question3').val(""),
-                $('#question4').val(""),
-                $('#question5').val(""),
-                $('#question6').val(""),
-                $('#question7').val(""),
-                $('#question8').val(""),
-                $('#question9').val(""),
-                $('#question10').val("")
+                        // Friend match modal
+                        $("#match-name").text(data.name);
+                        $("#match-image").attr("src", data.photo);
+                        $("#match-modal").modal("toggle");
+                        // Clear the form when submitting
+                        $("#name").val("");
+                        $("#photo").val("");
+                        $('#question1').val(""),
+                            $('#question2').val(""),
+                            $('#question3').val(""),
+                            $('#question4').val(""),
+                            $('#question5').val(""),
+                            $('#question6').val(""),
+                            $('#question7').val(""),
+                            $('#question8').val(""),
+                            $('#question9').val(""),
+                            $('#question10').val("")
 
-            });
-
+                    });
+            } else {
+                alert("Please fill out all fields to continue")
+            }
+        });
     });
+
 
 </script>
