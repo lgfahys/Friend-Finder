@@ -4,26 +4,52 @@
 //    * also be used to handle the compatibility logic.
 var users = require("../data/friends.js");
 
-module.exports = function(app) {
-    app.get("/api/friends", function(req, res) {
+
+module.exports = function (app) {
+    app.get("/api/friends", function (req, res) {
         res.json(users);
-      });
+    });
 
-      app.post("/api/friends", function(req, res) {
-          var userInput = req.body;
-          var userScores = req.body.scores;
-          var difference = 0;
-          var match = {
-              name: "",
-              photo: "",
-              compatability: 1000
-          }
+    app.post("/api/friends", function (req, res) {
+        // storing the current user input in a variable
+        var userInput = req.body;
+        // storing the current user scores in a variable
+        var userScores = userInput.scores;
+        // creating a match object to later store the best match data
+        var match = {
+            name: "",
+            photo: "",
+            compatability: 0
+        }
+        // creating an array to hold all the compatability scores
+        var compatabilityArray = [];
 
-          var x = userScores.map(function(item) {
-              return parseInt(item, 10);
-          });
+        for (var i = 0; i < users.length; i++) {
+            // setting the initial difference between scores to 0
+            var difference = 0;
+            for (var j = 0; j < userScores.length; j++) {
+                // finding the absolute value of all users scores minus current users scores (userScores) and storing it in the 'difference' variable'
+                difference += (Math.abs(users[i].scores[j] - userScores[j]));
+            }
 
-          users.push(userInput);
-          res.json(true);
-      });
+            console.log("User: " + users[i].name +  "\nUser Scores: " + users[i].scores + "\nCurrent User Scores: " + userScores);
+            console.log("Difference: " + difference);
+            compatabilityArray.push(difference);
+            console.log(compatabilityArray);
+            // finding the smallest difference stored in the compatability array
+            var bestMatchCompatability = Math.min(...compatabilityArray);
+            console.log("Highest Compatability Score: " + bestMatchCompatability);
+            if (difference === bestMatchCompatability) {
+                match.name = users[i].name;
+                match.photo = users[i].photo;
+            }
+        };
+
+        console.log("Best match name: " + match.name);
+        console.log("Best match photo: " + match.photo);
+
+
+        users.push(userInput);
+        res.json(match);
+    });
 };

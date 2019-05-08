@@ -10,7 +10,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- Bootstrap link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 
@@ -139,12 +143,11 @@
         <a href="/api/friends">Friends API</a>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="match-modal" tabindex="-1" role="dialog" aria-labelledby="matchModal"
-        aria-hidden="true">
+    <div class="modal fade" id="matchModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Here's Your Best Match!</h5>
+                    <h5 id="modal-title">Here's Your Best Match!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -159,14 +162,11 @@
             </div>
         </div>
     </div>
-</body>
 
-</html>
-
-<script type="text/javascript">
-    $(document).ready(function () {
+    <script type="text/javascript">
         $("#submit").on("click", function (event) {
             event.preventDefault();
+            $("#match-modal").modal("toggle");
             // Form Validation
             function validateForm() {
                 var isValid = true;
@@ -204,34 +204,40 @@
                 };
 
                 console.log(newUser);
+                // Clear the form when submitting
+                $("#name").val("");
+                $("#photo").val("");
+                $('#question1').val(""),
+                    $('#question2').val(""),
+                    $('#question3').val(""),
+                    $('#question4').val(""),
+                    $('#question5').val(""),
+                    $('#question6').val(""),
+                    $('#question7').val(""),
+                    $('#question8').val(""),
+                    $('#question9').val(""),
+                    $('#question10').val("")
 
-                $.post("/api/friends", newUser,
-                    function (data) {
+                $.ajax("/api/friends", {
+                    type: "POST",
+                    url: "friends.js",
+                    data: newUser
+                }).then(function (response) {
+                    console.log("User data added");
+                    console.log(response);
+                    $("#matchModal").modal("show");
+                    $("#match-name").text(response.name);
+                    $("#match-image").attr("src", response.photo);
+                });
 
-                        // Friend match modal
-                        $("#match-name").text(data.name);
-                        $("#match-image").attr("src", data.photo);
-                        $("#match-modal").modal("toggle");
-                        // Clear the form when submitting
-                        $("#name").val("");
-                        $("#photo").val("");
-                        $('#question1').val(""),
-                            $('#question2').val(""),
-                            $('#question3').val(""),
-                            $('#question4').val(""),
-                            $('#question5').val(""),
-                            $('#question6').val(""),
-                            $('#question7').val(""),
-                            $('#question8').val(""),
-                            $('#question9').val(""),
-                            $('#question10').val("")
-
-                    });
             } else {
                 alert("Please fill out all fields to continue")
             }
         });
-    });
 
 
-</script>
+
+    </script>
+</body>
+
+</html>
