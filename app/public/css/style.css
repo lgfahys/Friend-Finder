@@ -47,7 +47,7 @@
     background: darkcyan;
     color: whitesmoke;
     font-size: 18px;
-    width: 100%;
+    float: right;
     margin-top: 20px;
 }
 
