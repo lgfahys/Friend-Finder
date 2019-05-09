@@ -1,7 +1,7 @@
 .wrapper {
     height: 100%;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: hidden;
     display: block;
     position: relative;
     padding-bottom: 100px;
@@ -47,7 +47,7 @@
     background: darkcyan;
     color: whitesmoke;
     font-size: 18px;
-    float: right;
+    width: 100%;
     margin-top: 20px;
 }
 
