@@ -5,6 +5,10 @@ Friend Finder is a compatibility-based "Friend Finder" application that can be u
 * Node.js
 * Express.js
 * Heroku
+* HTML
+* CSS
+* Bootstrap
+* jQuery
 
 ## How It Works
 
