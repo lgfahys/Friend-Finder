@@ -10,24 +10,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <center>
+    <div class="wrapper">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container" id="jumbo-container">
+                <center>
                 <h1 class="display-4">Friend Finder</h1>
-                <p class="lead">Let us find you the most compatible friends</p>
-                <a href="/survey"><button class="btn">Take Survey</button></a>
-            </center>
+                <p class="lead" id="sub-header">Let us find you the most compatible friends</p>
+                <a href="/survey"><button class="btn" id="start">Find Friends</button></a>
+                </center>
+            </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <span class="text-muted"><a href="/api/friends">Friends API</a></span>
+            <span class="lead" id="footer-text"><a href="/api/friends">Friends API</a></span>
+            <p class="lead" id="footer-text-two">&copy 2019 Lindsey Fahys</p>
         </div>
     </footer>
 </body>
